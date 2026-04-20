@@ -1,0 +1,21 @@
+# Application
+PORT=3000
+NODE_ENV=development
+JWT_SECRET=benyjoe-super-secret-key-change-in-production
+APP_URL=http://localhost:3000
+
+# Database
+DATABASE_URL="postgresql://postgres:password@localhost:5432/tactiball_db"
+
+# DeepSeek API
+DEEPSEEK_API_KEY=sk-11928177c1d54fa4ae0fc2945ed92c26
+DEEPSEEK_API_URL=https://api.deepseek.com/v1
+
+# File Upload
+MAX_FILE_SIZE=104857600 # 100MB
+ALLOWED_FILE_TYPES=image/*,video/*
+UPLOAD_DIR=./public/uploads
+
+# Session
+SESSION_SECRET=benyjoe-session-secret
+COOKIE_DOMAIN=localhost

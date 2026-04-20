@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          Role      @default(USER)
+  settings      Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastLogin     DateTime?
+  
+  analyses      Analysis[]
+  designs       Design[]
+  deepseekRequests DeepseekRequest[]
+  
+  @@map("users")
+}
+
+model Analysis {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  filename        String
+  originalFilename String
+  fileType        String
+  fileSize        Int
+  filePath        String
+  status          AnalysisStatus @default(PENDING)
+  results         Json?
+  createdAt       DateTime  @default(now())
+  completedAt     DateTime?
+  
+  @@map("analyses")
+}
+
+model Design {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name            String
+  colors          Json
+  template        String
+  elements        Json
+  thumbnail       String?
+  isPublic        Boolean   @default(false)
+  likes           Int       @default(0)
+  downloads       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@map("designs")
+}
+
+model DeepseekRequest {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type            String
+  status          RequestStatus @default(PENDING)
+  options         Json?
+  response        Json?
+  createdAt       DateTime  @default(now())
+  completedAt     DateTime?
+  
+  @@map("deepseek_requests")
+}
+
+enum Role {
+  USER
+  ADMIN
+  COACH
+  SCOUT
+}
+
+enum AnalysisStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum RequestStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}

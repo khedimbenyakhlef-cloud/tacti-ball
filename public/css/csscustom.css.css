@@ -1,0 +1,430 @@
+/**
+ * Styles supplémentaires pour BENY-JOE TACTI-BALL
+ * Compléments aux styles Tailwind
+ */
+
+/* Animation améliorée pour les cartes */
+.card-hover-effect {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Effet de profondeur */
+.depth-1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.depth-2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.depth-3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+.depth-4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+.depth-5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+
+/* Bouton spécial DeepSeek */
+.btn-deepseek-glow {
+    background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-deepseek-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-deepseek-glow:hover::before {
+    left: 100%;
+}
+
+/* Animation de chargement personnalisée */
+.loader-dots {
+    display: inline-flex;
+    align-items: center;
+}
+
+.loader-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1a5c36;
+    margin: 0 3px;
+    animation: loader-dots 1.4s infinite ease-in-out both;
+}
+
+.loader-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.loader-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes loader-dots {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Barre de progression animée */
+.progress-bar-animated {
+    background: linear-gradient(90deg, 
+        #1a5c36 0%, 
+        #228B22 25%, 
+        #20B2AA 50%, 
+        #228B22 75%, 
+        #1a5c36 100%);
+    background-size: 200% 100%;
+    animation: progress-shimmer 2s infinite linear;
+}
+
+@keyframes progress-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Effet de texte dégradé */
+.text-gradient-primary {
+    background: linear-gradient(135deg, #1a5c36 0%, #228B22 50%, #20B2AA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-deepseek {
+    background: linear-gradient(135deg, #007AFF 0%, #00BFFF 50%, #0056CC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Animation de flottement améliorée */
+.float-enhanced {
+    animation: float-enhanced 6s ease-in-out infinite;
+}
+
+@keyframes float-enhanced {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    66% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+}
+
+/* Effet de particules amélioré */
+.particle-advanced {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+/* Animation de texte machine à écrire */
+.typing-animation {
+    overflow: hidden;
+    border-right: 3px solid #1a5c36;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #1a5c36 }
+}
+
+/* Effet de verre amélioré */
+.glass-effect-advanced {
+    background: rgba(15, 25, 20, 0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(26, 92, 54, 0.3);
+}
+
+/* Animation de pulsation pour les éléments en direct */
+.pulse-live {
+    animation: pulse-live 2s infinite;
+}
+
+@keyframes pulse-live {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+}
+
+/* Effet de surbrillance au survol */
+.highlight-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(26, 92, 54, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.highlight-hover:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Animation de rotation 3D */
+.rotate-3d {
+    animation: rotate3d 20s infinite linear;
+    transform-style: preserve-3d;
+}
+
+@keyframes rotate3d {
+    0% {
+        transform: perspective(1000px) rotateY(0deg) rotateX(10deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg) rotateX(10deg);
+    }
+}
+
+/* Effet de dégradé animé */
+.gradient-animated {
+    background: linear-gradient(270deg, #1a5c36, #228B22, #20B2AA, #8B4513);
+    background-size: 800% 800%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
+/* Styles pour les formulaires améliorés */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    background: rgba(15, 25, 20, 0.9);
+    padding: 0 0.5rem;
+    font-size: 0.875rem;
+    color: #9CA3AF;
+    transition: all 0.3s;
+}
+
+.form-input:focus + .form-label {
+    color: #1a5c36;
+    transform: translateY(-0.25rem);
+}
+
+/* Animation de chargement de page */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #050A05 0%, #0A1A0A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.page-loader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Styles pour les tables améliorées */
+.table-striped tbody tr:nth-child(odd) {
+    background: rgba(26, 92, 54, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(26, 92, 54, 0.1);
+}
+
+/* Effet de parallaxe léger */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Animation de rebond améliorée */
+.bounce-enhanced {
+    animation: bounce-enhanced 2s infinite;
+}
+
+@keyframes bounce-enhanced {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Styles pour les modales améliorées */
+.modal-backdrop {
+    background: rgba(5, 10, 5, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.modal-enter {
+    animation: modal-enter 0.3s ease-out;
+}
+
+@keyframes modal-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Effet de texte néon */
+.neon-text {
+    text-shadow: 
+        0 0 5px #1a5c36,
+        0 0 10px #1a5c36,
+        0 0 15px #1a5c36,
+        0 0 20px #228B22;
+    animation: neon-flicker 1.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 5px #1a5c36,
+            0 0 10px #1a5c36,
+            0 0 15px #1a5c36,
+            0 0 20px #228B22;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Styles responsifs supplémentaires */
+@media (max-width: 640px) {
+    .mobile-stack {
+        flex-direction: column;
+    }
+    
+    .mobile-full {
+        width: 100%;
+    }
+    
+    .mobile-text-center {
+        text-align: center;
+    }
+    
+    .mobile-hide {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .desktop-only {
+        display: block;
+    }
+}
+
+/* Utilitaires supplémentaires */
+.text-balance {
+    text-wrap: balance;
+}
+
+.break-words {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Animation de chargement de données */
+.data-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.data-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    100% {
+        left: 100%;
+    }
+}
