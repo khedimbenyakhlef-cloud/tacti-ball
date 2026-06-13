@@ -1030,7 +1030,7 @@ Analyse et recommandation :
 @app.on_event("startup")
 async def startup():
     logger.info("🏆 TACTI-BALL PRO v3.0 API démarrée")
-    asyncio.create_task(_keep_alive_loop())
+    #keep-alive désactivé sur Railway
 
 async def _keep_alive_loop():
     import httpx
