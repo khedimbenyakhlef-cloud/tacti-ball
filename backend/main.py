@@ -1034,7 +1034,8 @@ async def startup():
 
 async def _keep_alive_loop():
     import httpx
-    url = os.getenv("RENDER_EXTERNAL_URL", "http://localhost:10000") + "/health"
+    _raw = os.getenv("RAILWAY_PUBLIC_DOMAIN") or os.getenv("RENDER_EXTERNAL_URL", "")
+    url = (f"https://{_raw}" if _raw and not _raw.startswith("http") else _raw or "http://localhost:10000") + "/health"
     await asyncio.sleep(30)  # Attendre que le serveur soit prêt
     while True:
         await asyncio.sleep(290)  # ~5 minutes
